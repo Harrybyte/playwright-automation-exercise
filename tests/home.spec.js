@@ -1,7 +1,15 @@
-import {test, expect} from '@playwright/test';
+import {test} from '@playwright/test';
+import HomePage from '../pages/HomePage';
+
 test('Verify Automation Exercise homepage loads', async ({page})=>{
 
-    await page.goto('/');
-    await expect(page).toHaveTitle(/Automation Exercise/);
+    const homePage = new HomePage(page);
+    await homePage.open();
+    await homePage.verifyTitle();
+    await homePage.verifyLogoIsVisible();
+    await homePage.clickSignupLogin();
+    await homePage.verifyLoginPage();
 
+   
 });
+
