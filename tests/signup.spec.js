@@ -14,4 +14,31 @@ test('User can start the signup Process', async({page})=>{
 
     await signupPage.signup('Harvinder',uniqueEmail)
     await signupPage.verifySignupPage();
+
+    await signupPage.enterAccountInformation('Password@123');
+
+await signupPage.selectDateOfBirth(
+    '10',
+    '5',
+    '1997'
+);
+
+await signupPage.enterPersonalInformation(
+    'Harvinder',
+    'Singh',
+    'OpenAI'
+);
+
+await signupPage.enterAddressInformation(
+    'Noida Sector 62',
+    'India',
+    'Uttar Pradesh',
+    'Noida',
+    '201301',
+    '9876543210'
+);
+
+await signupPage.createAccount();
+await signupPage.verifyAccountCreated();
+await signupPage.clickContinue();
 })
